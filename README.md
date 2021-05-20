@@ -1,4 +1,5 @@
-# countries
+<h1>WEB, PWA - Приложение для просмотра погоды на VUE JS.</h1>
+<h2>Технологии разработки: HTML, SCSS, VUE JS, <a href="https://openweathermap.org/api">Rest Api</a></h2>
 
 ## Project setup
 ```
