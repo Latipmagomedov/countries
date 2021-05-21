@@ -9,17 +9,9 @@ export default {
   data() {
     return {
       loader: true,
-      countries: [],
-      search: "",
     };
   },
   created: function () {
-    fetch(`https://restcountries.eu/rest/v2/all`)
-      .then((response) => response.json())
-      .then((res) => {
-        console.log(res);
-        this.countries = res;
-      });
     window.onload = () => {
       this.loader = false;
     };
