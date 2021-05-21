@@ -30,9 +30,7 @@
             "
           >
             <img class="home__country-flag" :src="country.flag" alt="flag" />
-            <h3 class="home__country-name">
-              {{ index + 1 }} - {{ country.name }}
-            </h3>
+            <h3 class="home__country-name">{{ country.name }}</h3>
             <p class="home__country-alpha-code">
               Код сраны: <span>{{ country.alpha2Code }}</span>
             </p>
