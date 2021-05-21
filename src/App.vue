@@ -1,8 +1,20 @@
 <template>
   <div id="app">
-    <router-view />
+    <Loader />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
+
+<script>
+import Loader from "@/components/Loader.vue";
+export default {
+  components: {
+    Loader,
+  },
+};
+</script>
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
@@ -32,6 +44,64 @@ body {
   background-color: $light-bg;
   color: $light-col;
   font-family: "Montserrat", sans-serif;
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 600px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $dark-bg;
+  z-index: 99;
+}
+
+.loader,
+.loader:after {
+  overflow: hidden;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+.loader {
+  margin: 0px auto;
+  margin-top: -50px;
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 10px solid rgba(101, 171, 248, 0.2);
+  border-right: 10px solid rgba(101, 171, 248, 0.2);
+  border-bottom: 10px solid rgba(101, 171, 248, 0.2);
+  border-left: 10px solid #65abf8;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load8 1.1s infinite linear;
+  animation: load8 1.1s infinite linear;
+}
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 .container {
@@ -146,23 +216,17 @@ input {
       max-width: 280px;
       margin-top: 8px;
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       font-size: 18px;
       font-weight: 600;
       span {
         margin-left: 10px;
+        margin-bottom: 8px;
         padding: 4px 10px;
         border-radius: 7px;
-        display: flex;
-        flex-wrap: wrap;
         background-color: #fc1a1a;
         color: #fff;
-
-        p {
-          &:not(:first-child) {
-            margin-left: 4px;
-          }
-        }
       }
     }
   }
@@ -170,31 +234,100 @@ input {
 
 .result {
   position: relative;
-  min-height: 600px;
-  height: 100vh;
   display: flex;
   align-items: center;
 
   .container {
     position: relative;
-    min-height: 600px;
-    height: 100vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+  }
+
+  .home__countries {
+    margin-top: 0;
   }
 
   .result__back {
-    position: absolute;
-    top: 15px;
-    left: 0;
+    margin-top: 20px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     p {
       margin-left: 10px;
       color: $blue;
       font-size: 14px;
       font-weight: 600;
+    }
+  }
+
+  // .home__content {
+  //   min-height: 600px;
+  //   margin-top: 0px;
+  //   // padding-top: 150px;
+
+  //   .home__countries {
+  //     margin-top: 200px;
+  //   }
+  // }
+}
+
+.paginate {
+  margin-top: 40px;
+  padding-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .paginate__pag {
+    padding: 10px 15px;
+    background-color: $blue;
+    color: #fff;
+    list-style: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #000;
+    }
+    a {
+      color: #fff;
+    }
+  }
+
+  .paginate_active {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+.paginate {
+  margin-top: 40px;
+  padding-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    list-style: none;
+
+
+    a {
+      padding: 10px 15px;
+      background-color: $blue;
+      color: #fff;
+      list-style: none;
+      cursor: pointer;
+      color: #fff;
+      &:hover {
+        background-color: #000;
+      }
+    }
+  }
+
+  .active {
+    a {
+      background-color: #000;
+      color: #fff;
     }
   }
 }

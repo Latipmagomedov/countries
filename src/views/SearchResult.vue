@@ -33,19 +33,14 @@
             </p>
             <p class="home__country-alpha-code">
               Валюта:
-              <span
-                ><p v-if="country.currencies[0].symbol">
-                  {{ country.currencies[0].symbol }}
-                </p>
-                {{ country.currencies[0].code }}</span
-              >
+              <span> {{ country.currencies[0].code }}</span>
             </p>
             <p class="home__country-alpha-code">
               Языки:
               <span
-                ><p v-for="(language, index) in country.languages" :key="index">
-                  {{ language.name }},
-                </p></span
+                v-for="(language, index) in country.languages"
+                :key="index"
+                >{{ language.name }}</span
               >
             </p>
           </div>
